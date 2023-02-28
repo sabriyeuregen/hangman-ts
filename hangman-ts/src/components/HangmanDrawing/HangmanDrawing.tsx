@@ -47,13 +47,39 @@ const LEFT_ARM = (
   }}/>
 )
 
-const HangmanDrawing:React.FC = () => {
+const RIGHT_LEG = (
+  <div style={{
+    width:"100px",
+    height:"10px",
+    background:"black",
+    position:"absolute",
+    top:"210px",
+    right: "-90px",
+    rotate:"60deg",
+    transformOrigin: "left bottom"
+  }}/>
+)
+
+const LEFT_LEG = (
+  <div style={{
+    width:"100px",
+    height:"10px",
+    background:"black",
+    position:"absolute",
+    top:"210px",
+    right: 0,
+    rotate:"-60deg",
+    transformOrigin: "right bottom"
+  }}/>
+)
+
+const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG]
+
+const HangmanDrawing:React.FC<{numberOfGusses:number}> = (props) => {
   return (
     <div style={{position: "relative"}}>
-      {HEAD}
-      {BODY}
-      {RIGHT_ARM}
-      {LEFT_ARM}
+      {BODY_PARTS.slice(0, props.numberOfGusses)}
+
       <div
       style={{
         height:"50px",
